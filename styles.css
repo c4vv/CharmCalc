@@ -1,0 +1,13 @@
+h2 {
+    margin-top:.5em !important;
+}
+.form-check-input {
+    margin-right:.5em;
+}
+label {
+    display:block !important;
+    margin-left:1em;
+}
+.form-control {
+    max-width:200px;
+}
