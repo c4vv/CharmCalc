@@ -62,6 +62,7 @@ const TRAINERS = [
     new Trainer("Unova", "Route 9 (Mall)", "Lady Isabel", 4080),
     new Trainer("Unova", "Castelia", "Morimoto", 15660),
     new Trainer("Unova", "Undella", "Cynthia", 16560),
+    new Trainer("Sinnoh", "Route 214", "PI Carlos", 6000)
 ];
 
 export { GYMS, TRAINERS };
