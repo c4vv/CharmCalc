@@ -8,6 +8,7 @@ GYMS.forEach(gym => {
     check_input.type = "checkbox";
     check_input.name = gym.name;
     check_input.value = gym.profit;
+    check_input.classList.add("form-check-input");
 
     check_cell.appendChild(check_input);
     Object.keys(gym).forEach((k, i) => {
@@ -25,6 +26,7 @@ TRAINERS.forEach(trainer => {
     check_input.type = "checkbox";
     check_input.name = trainer.name;
     check_input.value = trainer.profit;
+    check_input.classList.add("form-check-input");
 
     check_cell.appendChild(check_input);
     Object.keys(trainer).forEach((k, i) => {
