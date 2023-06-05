@@ -37,7 +37,7 @@ function updateTotal() {
     riches100.textContent = 'Riches 100%: ' + currencyFormat(riches100Total);
 };
 
-document.querySelector('#gym-table')
+document.querySelector('.form-check-input')
 .addEventListener('change', () => {
     updateTotal();
 });

@@ -1,4 +1,4 @@
-h2 {
+h2, h3{
     margin-top:.5em !important;
 }
 .form-check-input {
@@ -11,4 +11,10 @@ label {
 }
 .form-control {
     max-width:200px;
+}
+tr {
+  margin-top:.5em;
+}
+.form-check-input {
+  margin-right:1em;
 }
