@@ -37,16 +37,16 @@ function updateTotal() {
     riches100.textContent = 'Riches 100%: ' + currencyFormat(riches100Total);
 };
 
-document.querySelector('.form-check-input')
+document.querySelector('#trainers')
 .addEventListener('change', () => {
     updateTotal();
 });
-/*
-document.querySelector('#trainer-table')
+
+document.querySelector('#gyms')
 .addEventListener('change', () => {
     updateTotal();
 });
-*/
+
 document.querySelector('#charm-form')
 .addEventListener('input', () => {
     updateTotal();
