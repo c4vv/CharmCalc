@@ -41,10 +41,12 @@ document.querySelector('.form-check-input')
 .addEventListener('change', () => {
     updateTotal();
 });
+/*
 document.querySelector('#trainer-table')
 .addEventListener('change', () => {
     updateTotal();
 });
+*/
 document.querySelector('#charm-form')
 .addEventListener('input', () => {
     updateTotal();
