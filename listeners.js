@@ -37,6 +37,14 @@ function updateTotal() {
     riches100.textContent = 'Riches 100%: ' + currencyFormat(riches100Total);
 };
 
+var elements = document.getElementsByClassName("form-check-input");
+
+for (var i = 0; i < elements.length; i++) {
+
+    elements[i].addEventListener('change', updateTotal, false);
+
+}
+
 document.querySelector('#trainers')
 .addEventListener('change', () => {
     updateTotal();
