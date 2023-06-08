@@ -41,7 +41,8 @@ var elements = document.getElementsByClassName("form-check-input");
 
 for (var i = 0; i < elements.length; i++) {
 
-    elements[i].addEventListener('change', updateTotal, false);
+    elements[i].addEventListener('change', () => {updateTotal()});
+
 
 }
 
