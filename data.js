@@ -66,3 +66,18 @@ const TRAINERS = [
 ];
 
 export { GYMS, TRAINERS };
+
+/*
+    prospective johto data from
+    https://docs.google.com/spreadsheets/d/1otRiN3zr04Y0G_9dD6Xl1kyfmX76cYfth7XbcwVkeHQ/edit?usp=sharing
+    seems like pretty educated guesswork, will need to verify @ release.
+    
+    new Gym("Johto", "Violet", "Falkner", 8632),
+    new Gym("Johto", "Azalea", "Bugsy", 8736),
+    new Gym("Johto", "Goldenrod", "Whitney", 8840),
+    new Gym("Johto", "Ecruteak", "Morty", 8944),
+    new Gym("Johto", "Cianwood", "Chuck", 9048),
+    new Gym("Johto", "Olivine", "Jasmine", 9152),
+    new Gym("Johto", "Mahogany", "Pryce", 9256),
+    new Gym("Johto", "Blackhorn", "Claire", 9360),
+*/
