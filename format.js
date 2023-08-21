@@ -93,7 +93,7 @@ eliteFourTable.setAttribute("id","elite-four-table")
 eliteFourTable.classList.add("table","table-sm","table-fixed","gym-table")
 eliteFourTable.innerHTML="<tr><th></th><th>Region</th><th>Base Profit</th></tr>";
 
-eliteFourDiv.appendChild(eliteFourHeader);
+//eliteFourDiv.appendChild(eliteFourHeader);
 eliteFourDiv.appendChild(eliteFourTable);
 
 ELITEFOUR.forEach(team =>{

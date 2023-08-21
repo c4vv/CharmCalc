@@ -1,6 +1,9 @@
 h2, h3{
     margin-top:.5em !important;
 }
+h2 {
+  font-weight: bold;
+}
 .form-check-input {
   height:1.5em;
   width:1.5em;
