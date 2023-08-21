@@ -1,4 +1,4 @@
-import { GYMS, TRAINERS } from "./data.js";
+import { GYMS, TRAINERS, ELITEFOUR } from "./data.js";
 
 const gymDiv = document.querySelector('#gyms');
 
@@ -12,14 +12,14 @@ GYMS.forEach(gym =>{
 
     let gymTable = document.createElement("table");
     gymTable.setAttribute("id",gym.region.toLowerCase()+"-gyms")
-    gymTable.classList.add("table","table-sm","gym-table")
+    gymTable.classList.add("table","table-sm","table-fixed","gym-table")
     gymTable.innerHTML="<tr><th></th><th>City</th><th>Leader</th><th>Base Profit</th></tr>";
 
     gymDiv.appendChild(gymHeader);
     gymDiv.appendChild(gymTable);
   }
 })
-console.log(gymRegions)
+
 
 
 const trainerDiv = document.querySelector('#trainers');
@@ -34,7 +34,7 @@ TRAINERS.forEach(trainer =>{
 
     let trainerTable = document.createElement("table");
     trainerTable.setAttribute("id",trainer.region.toLowerCase()+"-trainers")
-    trainerTable.classList.add("table","table-sm","trainer-table")
+    trainerTable.classList.add("table","table-sm","table-fixed","trainer-table")
     trainerTable.innerHTML="<tr><th></th><th>Region</th><th>Trainer</th><th>Base Profit</th></tr>";
 
     trainerDiv.appendChild(trainerHeader);
@@ -84,6 +84,35 @@ TRAINERS.forEach(trainer => {
     });
 });
 
+const eliteFourDiv = document.querySelector('#elite-four');
+
+let eliteFourHeader = document.createElement("h3");
+eliteFourHeader.innerHTML="Elite Four";
+let eliteFourTable = document.createElement("table");
+eliteFourTable.setAttribute("id","elite-four-table")
+eliteFourTable.classList.add("table","table-sm","table-fixed","gym-table")
+eliteFourTable.innerHTML="<tr><th></th><th>Region</th><th>Base Profit</th></tr>";
+
+eliteFourDiv.appendChild(eliteFourHeader);
+eliteFourDiv.appendChild(eliteFourTable);
+
+ELITEFOUR.forEach(team =>{
+  let eliteFourTable = document.querySelector('#elite-four-table');
+  let row = eliteFourTable.insertRow();
+  let check_cell = row.insertCell();
+  let check_input = document.createElement("input");
+  check_input.type = "checkbox";
+  check_input.name = team.region;
+  check_input.value = team.profit;
+  check_input.classList.add("form-check-input");
+
+  check_cell.appendChild(check_input);
+  Object.keys(team).forEach((k, i) => {
+      let cell = row.insertCell();
+      let text = document.createTextNode(team[k]);
+      cell.appendChild(text);
+  });
+});
 
 
 
