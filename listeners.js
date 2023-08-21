@@ -10,8 +10,13 @@ function currencyFormat(x) {
 function updateTotal() {
     let gymTotal = 0;
     let trainerTotal = 0;
+<<<<<<< HEAD
     let eliteFourTotal = 0;
 
+=======
+
+
+>>>>>>> 76654659fdfea1629137d1195d0592962cb9fbe3
     document.querySelectorAll('#gyms input[type="checkbox"]:checked')
     .forEach((checkbox) => {
         gymTotal += parseInt(checkbox.value);
