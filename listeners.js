@@ -95,8 +95,7 @@ function createURL() {
     checkedBoxIDs.push(k.id);
   });
 
-  const path = ((window.location.path) ? window.location.path : "/" )
-  let s = window.location.origin+path+"?vals="+checkedBoxIDs.join(",");
+  let s = window.location.origin+window.location.pathname+"?vals="+checkedBoxIDs.join(",");
 
   return s;
 }
