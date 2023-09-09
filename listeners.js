@@ -59,7 +59,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var checkedBoxIDs = [];
   checkedBoxes.forEach((k,i)=> {
     checkedBoxIDs.push(k.id);
+    if (Object.is(arr.length - 1, key)) {
+        // execute last item logic
+        updateTotal();
+      }
   })
+
 
 
   document.querySelector('#gyms')
@@ -90,7 +95,7 @@ function createURL() {
   checkedBoxes.forEach((k,i)=> {
     checkedBoxIDs.push(k.id);
   });
-  let s = window.location+"?vals="+checkedBoxIDs.join(",");
+  let s = window.location.origin+window.location.path+"?vals="+checkedBoxIDs.join(",");
 
   return s;
 }
