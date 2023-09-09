@@ -59,11 +59,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var checkedBoxIDs = [];
   checkedBoxes.forEach((k,i)=> {
     checkedBoxIDs.push(k.id);
-    if (Object.is(checkedBoxes.length - 1, k)) {
-        // execute last item logic
-        updateTotal();
-      }
   })
+  if(checkedBoxes.length!=0){
+      updateTotal();
+  }
 
 
 
