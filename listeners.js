@@ -41,9 +41,34 @@ function updateTotal() {
     amuletCoin.textContent = 'Amulet coin: ' + currencyFormat(amuletCoinTotal);
     riches75.textContent = 'Riches 75%: ' + currencyFormat(riches75Total);
     riches100.textContent = 'Riches 100%: ' + currencyFormat(riches100Total);
+
+    textToLink();
 };
 
 document.addEventListener("DOMContentLoaded", function(event) {
+  // ?vals=gk1,gk2,gk3,gh1,gh2,gh3
+  //console.log(getParameterByName("vals").split(","));
+  //console.log("test");
+
+  //load url params
+  const valsParam = getParameterByName("vals");
+  let vals = [];
+  if(valsParam) {
+    vals = valsParam.split(",");
+    vals.forEach((k,i) => {
+      document.getElementById(k).checked=true;
+    })
+  }
+
+  const checkedBoxes = document.querySelectorAll('input[type=checkbox]:checked');
+  var checkedBoxIDs = [];
+  checkedBoxes.forEach((k,i)=> {
+  //  console.log(k);
+    checkedBoxIDs.push(k.id);
+  })
+  //console.log(checkedBoxes);
+  //console.log(checkedBoxIDs);
+
   document.querySelector('#gyms')
   .addEventListener('change', () => {
       updateTotal();
@@ -61,3 +86,28 @@ document.addEventListener("DOMContentLoaded", function(event) {
       updateTotal();
   });
 });
+
+function textToLink() {
+    document.querySelector("#link").value = createURL();
+}
+
+function createURL() {
+  const checkedBoxes = document.querySelectorAll('input[type=checkbox]:checked');
+  var checkedBoxIDs = [];
+  checkedBoxes.forEach((k,i)=> {
+    //console.log(k);
+    checkedBoxIDs.push(k.id);
+  });
+  let s = window.location.origin+"/?vals="+checkedBoxIDs.join(",");
+  console.log(s);
+  return s;
+}
+
+function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}

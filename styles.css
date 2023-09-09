@@ -21,3 +21,9 @@ tr {
 .form-check-input {
   margin-right:1em;
 }
+#charm-form {
+  margin-bottom:1em;
+}
+#link {
+  max-width: none;
+}

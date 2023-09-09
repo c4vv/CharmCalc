@@ -41,7 +41,6 @@ TRAINERS.forEach(trainer =>{
     trainerDiv.appendChild(trainerTable);
   }
 })
-console.log(gymRegions)
 
 
 GYMS.forEach(gym => {
@@ -50,13 +49,14 @@ GYMS.forEach(gym => {
     let check_cell = row.insertCell();
     let check_input = document.createElement("input");
     check_input.type = "checkbox";
+    check_input.id = gym.id;
     check_input.name = gym.name;
     check_input.value = gym.profit;
     check_input.classList.add("form-check-input");
 
     delete gym.region;
     check_cell.appendChild(check_input);
-    Object.keys(gym).forEach((k, i) => {
+    Object.keys(gym).filter(v => v != "id").forEach((k, i) => {
         let cell = row.insertCell();
         let text = document.createTextNode(gym[k]);
         cell.appendChild(text);
@@ -71,13 +71,14 @@ TRAINERS.forEach(trainer => {
     let check_cell = row.insertCell();
     let check_input = document.createElement("input");
     check_input.type = "checkbox";
+    check_input.id = trainer.id;
     check_input.name = trainer.name;
     check_input.value = trainer.profit;
     check_input.classList.add("form-check-input");
 
     delete trainer.region;
     check_cell.appendChild(check_input);
-    Object.keys(trainer).forEach((k, i) => {
+    Object.keys(trainer).filter(v => v != "id").forEach((k, i) => {
         let cell = row.insertCell();
         let text = document.createTextNode(trainer[k]);
         cell.appendChild(text);
@@ -101,13 +102,16 @@ ELITEFOUR.forEach(team =>{
   let row = eliteFourTable.insertRow();
   let check_cell = row.insertCell();
   let check_input = document.createElement("input");
+
   check_input.type = "checkbox";
+
+  check_input.id = team.id;
   check_input.name = team.region;
   check_input.value = team.profit;
   check_input.classList.add("form-check-input");
 
   check_cell.appendChild(check_input);
-  Object.keys(team).forEach((k, i) => {
+  Object.keys(team).filter(v => v != "id").forEach((k, i) => {
       let cell = row.insertCell();
       let text = document.createTextNode(team[k]);
       cell.appendChild(text);
