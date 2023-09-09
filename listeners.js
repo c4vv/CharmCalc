@@ -90,7 +90,7 @@ function createURL() {
   checkedBoxes.forEach((k,i)=> {
     checkedBoxIDs.push(k.id);
   });
-  let s = window.location+"/?vals="+checkedBoxIDs.join(",");
+  let s = window.location+"?vals="+checkedBoxIDs.join(",");
 
   return s;
 }
