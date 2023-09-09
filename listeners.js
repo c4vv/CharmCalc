@@ -95,7 +95,9 @@ function createURL() {
   checkedBoxes.forEach((k,i)=> {
     checkedBoxIDs.push(k.id);
   });
-  let s = window.location.origin+window.location.path+"?vals="+checkedBoxIDs.join(",");
+
+  const path = ((window.location.path) ? window.location.path : "/" )
+  let s = window.location.origin+path+"?vals="+checkedBoxIDs.join(",");
 
   return s;
 }
