@@ -46,14 +46,14 @@ const GYMS = [
     new Gym("gu7", "Unova", "Icirrus", "Brycen", 9256),
     new Gym("gu8", "Unova", "Opelucid", "Iris", 9360),
 
-    new Gym("gj1", "Johto", "Violet City", "Falkner", 7968), // Fire
-    new Gym("gj2", "Johto", "Azalea Town", "Bugsy", 8064),
-    new Gym("gj3", "Johto", "Goldenrod City", "Whitney", 8160),
-    new Gym("gj4", "Johto", "Ecruteak City", "Morty", 8256),
-    new Gym("gj5", "Johto", "Cianwood City", "Chuck", 8352),
-    new Gym("gj6", "Johto", "Olivine City", "Jasmine", 8448),
-    new Gym("gj7", "Johto", "Mahogany Town", "Pryce", 8544),
-    new Gym("gj8", "Johto", "Blackthorn City", "Clair", 8640),
+    new Gym("gj1", "Johto", "Violet City", "Falkner", 8632), // Fire
+    new Gym("gj2", "Johto", "Azalea Town", "Bugsy", 8736),
+    new Gym("gj3", "Johto", "Goldenrod City", "Whitney", 8840),
+    new Gym("gj4", "Johto", "Ecruteak City", "Morty", 8944),
+    new Gym("gj5", "Johto", "Cianwood City", "Chuck", 9048),
+    new Gym("gj6", "Johto", "Olivine City", "Jasmine", 9152),
+    new Gym("gj7", "Johto", "Mahogany Town", "Pryce", 9256),
+    new Gym("gj8", "Johto", "Blackthorn City", "Clair", 9360),
 ];
 
 class Trainer {
