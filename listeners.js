@@ -26,7 +26,9 @@ function updateTotal() {
         eliteFourTotal += parseInt(checkbox.value);
     });
 
-    let total = gymTotal+trainerTotal+eliteFourTotal;
+    let donator = ((document.getElementById("donator").checked) ? 1.05 : 1)
+
+    let total = (gymTotal+trainerTotal+eliteFourTotal)*donator;
     let amuletCoinTotal = total*1.5-document.getElementById('amulet-coin-in').value;
     let riches75Total =	total*1.75-document.getElementById('riches-75-in').value;
     let riches100Total = total*2.0-document.getElementById('riches-100-in').value;
@@ -90,12 +92,15 @@ function textToLink() {
 
 function createURL() {
   const checkedBoxes = document.querySelectorAll('input[type=checkbox]:checked');
-  var checkedBoxIDs = [];
+  let checkedBoxIDs = [];
   checkedBoxes.forEach((k,i)=> {
     checkedBoxIDs.push(k.id);
   });
 
-  let s = window.location.origin+window.location.pathname+"?vals="+checkedBoxIDs.join(",");
+  let idstring = checkedBoxIDs.join(",");
+  idstring = idstring.replace("donator","");
+  console.log(idstring);
+  let s = window.location.origin+window.location.pathname+"?vals="+idstring;
 
   return s;
 }
