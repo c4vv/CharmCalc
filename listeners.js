@@ -96,7 +96,10 @@ function createURL() {
 	});
 
 	let idstring = checkedBoxIDs.join(",");
+
+	idstring = idstring.replace("donator,","");
 	idstring = idstring.replace("donator","");
+
 	console.log(idstring);
 	let s = window.location.origin+window.location.pathname+"?vals="+idstring;
 
