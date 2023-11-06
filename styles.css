@@ -1,32 +1,49 @@
+@media screen and (min-width: 1000px) {
+	.float-child {
+		width: 50%;
+		padding: 20px;
+	}
+	#calc {
+		position: fixed;
+	}
+	#data {
+		float: right;
+	}
+}
+body, tr, input {
+	background-color: #1d2030;
+	color: #dadce6;
+}
 h2, h3{
-    margin-top:.5em !important;
+	margin-top:.5em !important;
 }
 h1, h2 {
-  font-weight: bold;
-}
-.form-check-input {
-  height:1.5em;
-  width:1.5em;
+	font-weight: bold;
 }
 label {
-    display:block !important;
-    margin-left:1em;
-}
-.form-control {
-    max-width:200px;
+	display:block !important;
 }
 tr {
-  margin-top:.5em;
+	margin-top:.5em;
+}
+table tr:nth-child(even) {
+	background-color: #303447;
+	color: #dadce6;
 }
 .form-check-input {
-  margin-right:1em;
+	height:1.5em;
+	width:1.5em;
+	margin-right:1em;
+}
+.form-control {
+	max-width:200px;
 }
 #charm-form {
-  margin-bottom:1em;
+	margin-bottom:1em;
 }
 #link {
-  max-width: none;
+	max-width: none;
 }
 #donator {
-  width:2.5em;
+	width:2.5em;
 }
