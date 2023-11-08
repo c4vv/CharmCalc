@@ -1,90 +1,49 @@
 import { GYMS, TRAINERS, ELITEFOUR } from "./data.js";
 
-const gymDiv = document.querySelector('#gyms');
-let gymRegions = [];
-// Create region tables
-GYMS.forEach(gym =>{
-	if(gymRegions.includes(gym.region)){
-		return;
+let regions = [];
+function add_sub_table(region, name) {
+	let div = document.querySelector(`#${name}s`)
+	let header = document.createElement("h3");
+	header.innerHTML = region;
+	div.appendChild(header);
+
+	let table = document.createElement("table");
+	table.setAttribute("id",`${region.toLowerCase()}-${name}s`)
+	table.classList.add("table","table-sm","table-fixed",`${name}-table`)
+	if(name == "trainer") {
+		table.innerHTML="<tr><th></th><th>Region</th><th>Trainer</th><th>Base Profit</th></tr>";
+	} else if (name == "gym") {
+		table.innerHTML="<tr><th></th><th>City</th><th>Leader</th><th>Base Profit</th></tr>";
 	}
+	regions.push(name+region);
+	div.appendChild(table);
+}
 
-	gymRegions.push(gym.region);
-
-	let gymHeader = document.createElement("h3");
-	gymHeader.innerHTML=gym.region;
-
-	let gymTable = document.createElement("table");
-	gymTable.setAttribute("id",gym.region.toLowerCase()+"-gyms")
-	gymTable.classList.add("table","table-sm","table-fixed","gym-table")
-	gymTable.innerHTML="<tr><th></th><th>City</th><th>Leader</th><th>Base Profit</th></tr>";
-
-	gymDiv.appendChild(gymHeader);
-	gymDiv.appendChild(gymTable);
-})
-
-// Fill out table
-GYMS.forEach(gym => {
-	let gymTable = document.querySelector('#'+gym.region.toLowerCase()+'-gyms');
-	let row = gymTable.insertRow();
+function fill_table(unit, name) {
+	if(!regions.includes(name+unit.region)){
+		add_sub_table(unit.region, name);
+	}
+	let table = document.querySelector(`#${unit.region.toLowerCase()}-${name}s`);
+	let row = table.insertRow();
 	let check_cell = row.insertCell();
 	let check_input = document.createElement("input");
 	check_input.type = "checkbox";
-	check_input.id = gym.id;
-	check_input.name = gym.name;
-	check_input.value = gym.profit;
+	check_input.id = unit.id;
+	check_input.name = unit.name;
+	check_input.value = unit.profit;
 	check_input.classList.add("form-check-input");
-
-	delete gym.region;
 	check_cell.appendChild(check_input);
-	Object.keys(gym).filter(v => v != "id").forEach((k, i) => {
+
+	delete unit.region;
+	Object.keys(unit).filter(v => v != "id").forEach((k, i) => {
 		let cell = row.insertCell();
-		let text = document.createTextNode(gym[k]);
+		let text = document.createTextNode(unit[k]);
 		cell.appendChild(text);
 	});
-});
+}
 
-// Create region tables
-const trainerDiv = document.querySelector('#trainers');
-let trainerRegions = [];
-TRAINERS.forEach(trainer =>{
-	if(trainerRegions.includes(trainer.region)){
-		return;
-	}
-
-	trainerRegions.push(trainer.region);
-
-	let trainerHeader = document.createElement("h3");
-	trainerHeader.innerHTML=trainer.region;
-
-	let trainerTable = document.createElement("table");
-	trainerTable.setAttribute("id",trainer.region.toLowerCase()+"-trainers")
-	trainerTable.classList.add("table","table-sm","table-fixed","trainer-table")
-	trainerTable.innerHTML="<tr><th></th><th>Region</th><th>Trainer</th><th>Base Profit</th></tr>";
-
-	trainerDiv.appendChild(trainerHeader);
-	trainerDiv.appendChild(trainerTable);
-})
-
-// Fill out table
-TRAINERS.forEach(trainer => {
-	let trainerTable = document.querySelector('#'+trainer.region.toLowerCase()+'-trainers');
-	let row = trainerTable.insertRow();
-	let check_cell = row.insertCell();
-	let check_input = document.createElement("input");
-	check_input.type = "checkbox";
-	check_input.id = trainer.id;
-	check_input.name = trainer.name;
-	check_input.value = trainer.profit;
-	check_input.classList.add("form-check-input");
-
-	delete trainer.region;
-	check_cell.appendChild(check_input);
-	Object.keys(trainer).filter(v => v != "id").forEach((k, i) => {
-		let cell = row.insertCell();
-		let text = document.createTextNode(trainer[k]);
-		cell.appendChild(text);
-	});
-});
+GYMS.forEach(gym => {fill_table(gym, "gym");});
+TRAINERS.forEach(trainer => {fill_table(trainer, "trainer");});
 
 const eliteFourDiv = document.querySelector('#elite-four');
 let eliteFourTable = document.createElement("table");
