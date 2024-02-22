@@ -7,7 +7,7 @@ function currencyFormat(x) {
 	});
 };
 
-function updateTotal() {
+function updateTotal(pushHistory = false) {
 	let gymTotal = 0;
 	let trainerTotal = 0;
 	let eliteFourTotal = 0;
@@ -43,49 +43,65 @@ function updateTotal() {
 	riches75.textContent = 'Riches 75%: ' + currencyFormat(riches75Total);
 	riches100.textContent = 'Riches 100%: ' + currencyFormat(riches100Total);
 
-	textToLink();
+	textToLink(pushHistory);
 };
 
 document.addEventListener("DOMContentLoaded", function(event) {
-	//load url params
-	const valsParam = getParameterByName("vals");
-	let vals = [];
-	if(valsParam) {
-	vals = valsParam.split(",");
-		vals.forEach((k,i) => {
-			document.getElementById(k).checked=true;
-		})
-	}
-
-	const checkedBoxes = document.querySelectorAll('input[type=checkbox]:checked');
-	var checkedBoxIDs = [];
-	checkedBoxes.forEach((k,i)=> {
-		checkedBoxIDs.push(k.id);
-	})
-	if(checkedBoxes.length!=0){
+	isValsValid = getValsFromURL()
+	if(isValsValid){
 		updateTotal();
 	}
 
 	document.querySelector('#gyms')
 	.addEventListener('change', () => {
-		updateTotal();
+		updateTotal(true);
 	});
 	document.querySelector('#trainers')
 	.addEventListener('change', () => {
-		updateTotal();
+		updateTotal(true);
 	});
 	document.querySelector('#elite-four')
 	.addEventListener('change', () => {
-		updateTotal();
+		updateTotal(true);
 	});
 	document.querySelector('#charm-form')
 	.addEventListener('input', () => {
-		updateTotal();
+		updateTotal(true);
 	});
 });
 
-function textToLink() {
-	document.querySelector("#link").value = createURL();
+window.addEventListener('popstate', function(event){
+	getValsFromURL()
+	updateTotal();
+});
+
+function clearCheckboxes(){
+	document.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+		checkbox.checked = false
+	});
+}
+
+function getValsFromURL(){
+	const valsParam = getParameterByName("vals");
+	let vals = [];
+	let isValsValid = false;
+
+	clearCheckboxes()
+	if(valsParam) {
+		vals = valsParam.split(",");
+		vals.forEach((k,i) => {
+			document.getElementById(k).checked=true;
+			isValsValid = true;
+		})
+	}
+	return isValsValid;
+}
+function textToLink(pushHistory) {
+	newUrl = createURL();
+	document.querySelector("#link").value = newUrl;
+	if(pushHistory){
+		window.history.pushState({path:newUrl},'',newUrl);
+	}
 }
 
 function createURL() {
