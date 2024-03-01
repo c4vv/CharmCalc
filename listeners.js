@@ -82,6 +82,75 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	.addEventListener('input', () => {
 		updateTotal();
 	});
+	//5223 - amulet coin
+
+	//1412 - riches charm 75%
+
+	//1413 - riches charm 100%
+
+
+	fetch('https://pokemmoprices.com/api/v2/items/graph/min/5223/0')
+	  .then(response => {
+	    if (!response.ok) {
+	      throw new Error('Network response was not ok');
+	    }
+	    return response.json();
+	  })
+	  .then(data => {
+	    // Do something with the fetched data
+	    console.log(data);
+			const price = data.data.pop().y;
+			console.log(price);
+			document.getElementById('amulet-coin-in').value=price;
+	    // Update your webpage with the fetched data
+	    // For example:
+	    // document.getElementById('someElement').innerText = data.someProperty;
+	  })
+	  .catch(error => {
+	    console.error('There was a problem with your fetch operation:', error);
+  });
+	fetch('https://pokemmoprices.com/api/v2/items/graph/min/1412/0')
+		.then(response => {
+			if (!response.ok) {
+				throw new Error('Network response was not ok');
+			}
+			return response.json();
+		})
+		.then(data => {
+			// Do something with the fetched data
+			console.log(data);
+			const price = data.data.pop().y;
+			console.log(price);
+			document.getElementById('riches-75-in').value=price;
+			// Update your webpage with the fetched data
+			// For example:
+			// document.getElementById('someElement').innerText = data.someProperty;
+		})
+		.catch(error => {
+			console.error('There was a problem with your fetch operation:', error);
+	});
+	fetch('https://pokemmoprices.com/api/v2/items/graph/min/1413/0')
+		.then(response => {
+			if (!response.ok) {
+				throw new Error('Network response was not ok');
+			}
+			return response.json();
+		})
+		.then(data => {
+			// Do something with the fetched data
+			console.log(data);
+			const price = data.data.pop().y;
+			console.log(price);
+			document.getElementById('riches-100-in').value=price;
+			// Update your webpage with the fetched data
+			// For example:
+			// document.getElementById('someElement').innerText = data.someProperty;
+		})
+		.catch(error => {
+			console.error('There was a problem with your fetch operation:', error);
+	});
+
+
 });
 
 function textToLink() {
