@@ -74,6 +74,7 @@ const TRAINERS = [
 	new Trainer("tu5", "Unova", "Castelia", "Morimoto", 15660),
 	new Trainer("tu6", "Unova", "Undella", "Cynthia", 16560),
 	new Trainer("ts1", "Sinnoh", "Route 214", "PI Carlos", 6000),
+	new Trainer("ts2", "Sinnoh", "Route 210", "Belle & Pa", 5264),
 	new Trainer("tj1", "Johto", "Mt. Silver", "Red", 110400),
 	new Trainer("tj2", "Johto", "Lighthouse (Olivine)", "Gentleman Alfred", 4300),
 	new Trainer("tj3", "Johto", "Route 38 (Ecruteak)", "Gentleman Milton", 4300)
