@@ -102,6 +102,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			const price = data.data.pop().y;
 			console.log(price);
 			document.getElementById('amulet-coin-in').value=price;
+			updateTotal();
 	    // Update your webpage with the fetched data
 	    // For example:
 	    // document.getElementById('someElement').innerText = data.someProperty;
@@ -122,6 +123,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			const price = data.data.pop().y;
 			console.log(price);
 			document.getElementById('riches-75-in').value=price;
+			updateTotal();
 			// Update your webpage with the fetched data
 			// For example:
 			// document.getElementById('someElement').innerText = data.someProperty;
@@ -142,6 +144,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			const price = data.data.pop().y;
 			console.log(price);
 			document.getElementById('riches-100-in').value=price;
+			updateTotal();
 			// Update your webpage with the fetched data
 			// For example:
 			// document.getElementById('someElement').innerText = data.someProperty;
