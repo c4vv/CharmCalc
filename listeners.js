@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	//1413 - riches charm 100%
 
 
-	fetch('https://pokemmoprices.com/api/v2/items/graph/min/5223/0')
+	fetch('https://pokemmoprices.com/api/v2/items/graph/min/5223/1')
 	  .then(response => {
 	    if (!response.ok) {
 	      throw new Error('Network response was not ok');
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	  .catch(error => {
 	    console.error('There was a problem with your fetch operation:', error);
   });
-	fetch('https://pokemmoprices.com/api/v2/items/graph/min/1412/0')
+	fetch('https://pokemmoprices.com/api/v2/items/graph/min/1412/1')
 		.then(response => {
 			if (!response.ok) {
 				throw new Error('Network response was not ok');
@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		.catch(error => {
 			console.error('There was a problem with your fetch operation:', error);
 	});
-	fetch('https://pokemmoprices.com/api/v2/items/graph/min/1413/0')
+	fetch('https://pokemmoprices.com/api/v2/items/graph/min/1413/1')
 		.then(response => {
 			if (!response.ok) {
 				throw new Error('Network response was not ok');
