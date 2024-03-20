@@ -46,6 +46,64 @@ function updateTotal() {
 	textToLink();
 };
 
+function updateGymCount() {// Get the parent element
+    var section = document.getElementById('gyms');
+    var checkboxes = section.querySelectorAll('input[type="checkbox"]');
+    var headingBeforeSection = section.previousElementSibling;
+
+
+		var checkedCount = 0;
+    checkboxes.forEach(function(checkbox) {
+        if (checkbox.checked) {
+            checkedCount++;
+        }
+    });
+
+		if(checkedCount==0) {
+			headingBeforeSection.textContent = "Gyms";
+		} else {
+			headingBeforeSection.textContent = "Gyms [" + checkedCount + "]";
+		}
+}
+function updateEliteFourCount() {
+	var section = document.getElementById('elite-four');
+	var checkboxes = section.querySelectorAll('input[type="checkbox"]');
+	var headingBeforeSection = section.previousElementSibling;
+
+
+	var checkedCount = 0;
+	checkboxes.forEach(function(checkbox) {
+			if (checkbox.checked) {
+					checkedCount++;
+			}
+	});
+
+	if(checkedCount==0) {
+		headingBeforeSection.textContent = "Elite Four";
+	} else {
+		headingBeforeSection.textContent = "Elite Four [" + checkedCount + "]";
+	}
+
+}
+function updateTrainerCount() {
+	var section = document.getElementById('trainers');
+	var checkboxes = section.querySelectorAll('input[type="checkbox"]');
+	var headingBeforeSection = section.previousElementSibling;
+
+
+	var checkedCount = 0;
+	checkboxes.forEach(function(checkbox) {
+			if (checkbox.checked) {
+					checkedCount++;
+			}
+	});
+
+	if(checkedCount==0) {
+		headingBeforeSection.textContent = "Trainers";
+	} else {
+		headingBeforeSection.textContent = "Trainers [" + checkedCount + "]";
+	}
+}
 document.addEventListener("DOMContentLoaded", function(event) {
 	//load url params
 	const valsParam = getParameterByName("vals");
@@ -69,14 +127,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	document.querySelector('#gyms')
 	.addEventListener('change', () => {
 		updateTotal();
+		updateGymCount();
 	});
 	document.querySelector('#trainers')
 	.addEventListener('change', () => {
 		updateTotal();
+		updateTrainerCount();
 	});
 	document.querySelector('#elite-four')
 	.addEventListener('change', () => {
 		updateTotal();
+		updateEliteFourCount();
 	});
 	document.querySelector('#charm-form')
 	.addEventListener('input', () => {
