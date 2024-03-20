@@ -122,6 +122,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	})
 	if(checkedBoxes.length!=0){
 		updateTotal();
+		updateGymCount();
+		updateTrainerCount();
+		updateEliteFourCount();
 	}
 
 	document.querySelector('#gyms')
