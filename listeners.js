@@ -1,3 +1,18 @@
+class Item {
+	constructor(name,id,bp){
+		this.name = name;
+		this.id = id;
+	}
+}
+
+const items = [
+	new Item("Amulet Coin", "5223"),
+	new Item("Riches Charm 75%", "1412"),
+	new Item("Riches Charm 100%", "1413"),
+];
+
+
+
 function currencyFormat(x) {
 	return x.toLocaleString("en", {
 		style: "currency",
@@ -146,77 +161,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	.addEventListener('input', () => {
 		updateTotal();
 	});
+
+	getItemPrices(items);
 	//5223 - amulet coin
-
 	//1412 - riches charm 75%
-
 	//1413 - riches charm 100%
-
-
-	fetch('https://pokemmoprices.com/api/v2/items/graph/min/5223/1')
-	  .then(response => {
-	    if (!response.ok) {
-	      throw new Error('Network response was not ok');
-	    }
-	    return response.json();
-	  })
-	  .then(data => {
-	    // Do something with the fetched data
-	    console.log(data);
-			const price = data.data.pop().y;
-			console.log(price);
-			document.getElementById('amulet-coin-in').value=price;
-			updateTotal();
-	    // Update your webpage with the fetched data
-	    // For example:
-	    // document.getElementById('someElement').innerText = data.someProperty;
-	  })
-	  .catch(error => {
-	    console.error('There was a problem with your fetch operation:', error);
-  });
-	fetch('https://pokemmoprices.com/api/v2/items/graph/min/1412/1')
-		.then(response => {
-			if (!response.ok) {
-				throw new Error('Network response was not ok');
-			}
-			return response.json();
-		})
-		.then(data => {
-			// Do something with the fetched data
-			console.log(data);
-			const price = data.data.pop().y;
-			console.log(price);
-			document.getElementById('riches-75-in').value=price;
-			updateTotal();
-			// Update your webpage with the fetched data
-			// For example:
-			// document.getElementById('someElement').innerText = data.someProperty;
-		})
-		.catch(error => {
-			console.error('There was a problem with your fetch operation:', error);
-	});
-	fetch('https://pokemmoprices.com/api/v2/items/graph/min/1413/1')
-		.then(response => {
-			if (!response.ok) {
-				throw new Error('Network response was not ok');
-			}
-			return response.json();
-		})
-		.then(data => {
-			// Do something with the fetched data
-			console.log(data);
-			const price = data.data.pop().y;
-			console.log(price);
-			document.getElementById('riches-100-in').value=price;
-			updateTotal();
-			// Update your webpage with the fetched data
-			// For example:
-			// document.getElementById('someElement').innerText = data.someProperty;
-		})
-		.catch(error => {
-			console.error('There was a problem with your fetch operation:', error);
-	});
-
 
 });
 
@@ -248,4 +197,51 @@ function getParameterByName(name, url = window.location.href) {
 	if (!results) return null;
 	if (!results[2]) return '';
 	return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+function getItemPrices(items){
+	let itemsWithPrices = [];
+
+	fetch('https://pokemmoprices.com/api/v2/items/table')
+	  .then(response => {
+	    if (!response.ok) {
+	      throw new Error('Network response was not ok');
+	    }
+	    return response.json(); // Parse the JSON response
+	  })
+	  .then(data => {
+	    //console.log('Data received:', data);
+			// item.price = priceLessGTLFee(data.data.pop().y);
+			for (let item of items) {
+				let searchId = item.id;
+				let foundItem = null;
+				let itemPriceArray = data.data;
+				//console.log(itemPriceArray)
+				for (let j = 0; j < itemPriceArray.length; j++) {
+				  if (itemPriceArray[j].i == searchId) {
+				    foundItem = itemPriceArray[j];
+				    break;
+				  }
+				}
+				if (foundItem) {
+				  //console.log(foundItem);
+					let price = foundItem.p;
+					item.price = price;
+					//console.log(item);
+					itemsWithPrices.push(item);
+				} else {
+				  console.log('Object not found');
+				}
+
+			}
+
+				if (itemsWithPrices.length === items.length) {
+					document.getElementById('amulet-coin-in').value = itemsWithPrices.find(item => item.id === "5223")?.price;
+					document.getElementById('riches-75-in').value = itemsWithPrices.find(item => item.id === "1412")?.price;
+					document.getElementById('riches-100-in').value = itemsWithPrices.find(item => item.id === "1413")?.price;
+				}
+	  })
+	  .catch(error => {
+	    console.error('There was a problem with the fetch operation:', error);
+	  });
 }
