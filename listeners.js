@@ -202,7 +202,7 @@ function getParameterByName(name, url = window.location.href) {
 function getItemPrices(items){
 	let itemsWithPrices = [];
 
-	fetch('https://pokemmoprices.com/api/v2/items/table')
+	fetch('https://apis.fiereu.de/pokemmoprices/v1/items')
 	  .then(response => {
 	    if (!response.ok) {
 	      throw new Error('Network response was not ok');
@@ -215,17 +215,17 @@ function getItemPrices(items){
 			for (let item of items) {
 				let searchId = item.id;
 				let foundItem = null;
-				let itemPriceArray = data.data;
+				let itemPriceArray = data;
 				//console.log(itemPriceArray)
 				for (let j = 0; j < itemPriceArray.length; j++) {
-				  if (itemPriceArray[j].i == searchId) {
+				  if (itemPriceArray[j].item_id == searchId) {
 				    foundItem = itemPriceArray[j];
 				    break;
 				  }
 				}
 				if (foundItem) {
 				  //console.log(foundItem);
-					let price = foundItem.p;
+					let price = foundItem.price;
 					item.price = price;
 					//console.log(item);
 					itemsWithPrices.push(item);
